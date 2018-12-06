@@ -1,0 +1,31 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ gcc datatype_sizes.c
+datatype_sizes.c: In function ‘main’:
+datatype_sizes.c:4:12: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+     printf("The 'int' data type is\t\t %d byes\n", sizeof(int));
+            ^
+datatype_sizes.c:5:12: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+     printf("The 'unsigned int' data type is\t %d byes\n", sizeof(unsigned int));
+            ^
+datatype_sizes.c:6:12: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+     printf("The 'short int' data type is\t %d byes\n", sizeof(short int));
+            ^
+datatype_sizes.c:7:12: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+     printf("The 'long int' data type is\t %d bytes\n", sizeof(long int));
+            ^
+datatype_sizes.c:8:12: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+     printf("The 'long long int' data type is %d bytes\n", sizeof(long long int));
+            ^
+datatype_sizes.c:9:12: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+     printf("The 'float' data type is\t %d bytes\n", sizeof(float));
+            ^
+datatype_sizes.c:10:12: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+     printf("The 'char' data type is\t\t %d bytes \n", sizeof(char));
+            ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ./a.out
+The 'int' data type is           4 byes
+The 'unsigned int' data type is  4 byes
+The 'short int' data type is     2 byes
+The 'long int' data type is      8 bytes
+The 'long long int' data type is 8 bytes
+The 'float' data type is         4 bytes
+The 'char' data type is          1 bytes
