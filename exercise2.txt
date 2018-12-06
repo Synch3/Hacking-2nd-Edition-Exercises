@@ -1,0 +1,203 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ gcc -o char_array char_array.c
+char_array.c: In function ‘main’:
+char_array.c:21:12: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(str_a);
+            ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ls
+a.out  char_array  char_array.c  firstprog.c  work.txt
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ./char_array
+Hello, world!
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ gcc -g -o char_array2 char_array2.c
+char_array2.c: In function ‘main’:
+char_array2.c:8:12: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(str_a);
+            ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ gdb -q ./char_array2
+Reading symbols from ./char_array2...done.
+(gdb) list
+1       #include <stdio.h>
+2       #include <string.h>
+3
+4       int main() {
+5           char str_a[20];
+6
+7           strcpy(str_a, "Hello, world!\n");
+8           printf(str_a);
+9       }(gdb) break 6
+Breakpoint 1 at 0x4005ad: file char_array2.c, line 6.
+(gdb) break strcpy
+Function "strcpy" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) y
+Breakpoint 2 (strcpy) pending.
+(gdb) break 8
+Breakpoint 3 at 0x4005cf: file char_array2.c, line 8.
+(gdb) run
+Starting program: /mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/char_array2
+
+Breakpoint 1, main () at char_array2.c:7
+7           strcpy(str_a, "Hello, world!\n");
+(gdb) i r eip
+Invalid register `eip'
+(gdb) i r rip
+rip            0x4005ad 0x4005ad <main+23>
+(gdb) x/5i $rip
+=> 0x4005ad <main+23>:  lea    rax,[rbp-0x20]
+   0x4005b1 <main+27>:  movabs rdx,0x77202c6f6c6c6548
+   0x4005bb <main+37>:  mov    QWORD PTR [rax],rdx
+   0x4005be <main+40>:  mov    DWORD PTR [rax+0x8],0x646c726f
+   0x4005c5 <main+47>:  mov    WORD PTR [rax+0xc],0xa21
+(gdb) continue
+Continuing.
+
+Breakpoint 3, main () at char_array2.c:8
+8           printf(str_a);
+(gdb) i r rip
+rip            0x4005cf 0x4005cf <main+57>
+(gdb) x/5i $rip
+=> 0x4005cf <main+57>:  lea    rax,[rbp-0x20]
+   0x4005d3 <main+61>:  mov    rdi,rax
+   0x4005d6 <main+64>:  mov    eax,0x0
+   0x4005db <main+69>:  call   0x400470 <printf@plt>
+   0x4005e0 <main+74>:  mov    eax,0x0
+(gdb) continue
+Continuing.
+Hello, world!
+[Inferior 1 (process 91) exited normally]
+(gdb) run
+Starting program: /mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/char_array2
+
+Breakpoint 1, main () at char_array2.c:7
+7           strcpy(str_a, "Hello, world!\n");
+(gdb) continue
+Continuing.
+
+Breakpoint 3, main () at char_array2.c:8
+8           printf(str_a);
+(gdb) continue
+Continuing.
+Hello, world!
+[Inferior 1 (process 95) exited normally]
+(gdb) break strcpy
+Note: breakpoint 2 also set at pc 0x7fffff0bb160.
+Breakpoint 4 at gnu-indirect-function resolver at 0x7fffff0bb160: file ../sysdeps/x86_64/multiarch/strcpy.S, line 64.
+(gdb) run
+Starting program: /mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/char_array2
+Error in re-setting breakpoint 4: Function "strcpy" not defined.
+
+Breakpoint 1, main () at char_array2.c:7
+7           strcpy(str_a, "Hello, world!\n");
+(gdb) continue
+Continuing.
+
+Breakpoint 3, main () at char_array2.c:8
+8           printf(str_a);
+(gdb) continue
+Continuing.
+Hello, world!
+[Inferior 1 (process 96) exited normally]
+(gdb) Quit
+(gdb) quit
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ gcc -g -fno-builtin -o char_array2 char_array2.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ls
+a.out  char_array  char_array2  char_array2.c  char_array.c  firstprog.c  work.txt
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ls -l char_array2.c
+-rwxrwxrwx 1 Synche Synche 140 Dec  6 16:31 char_array2.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ rm char_array2.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ls
+a.out  char_array  char_array2  char_array.c  firstprog.c  work.txt
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ rm char_array
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ rm char_array2
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ls
+a.out  char_array.c  firstprog.c  work.txt
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ gcc -o char_array char_array.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ls
+a.out  char_array  char_array.c  firstprog.c  work.txt
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ls
+a.out  char_array  char_array2.c  char_array.c  firstprog.c  work.txt
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ^C
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ gcc -g -fno-builtin -o char_array2 char_array2.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ ls
+a.out  char_array  char_array2  char_array2.c  char_array.c  firstprog.c  work.txt
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ gdb -q ./char_array2
+Reading symbols from ./char_array2...done.
+(gdb) list
+1       #include <stdio.h>
+2       #include <string.h>
+3
+4       int main() {
+5           char str_a[20];
+6
+7           strcpy(str_a, "Hello, world!\n");
+8           printf(str_a);
+9       }(gdb) break 6
+Breakpoint 1 at 0x4005ed: file char_array2.c, line 6.
+(gdb) break strcpy
+Breakpoint 2 at 0x400490
+(gdb) break 8
+Breakpoint 3 at 0x4005fe: file char_array2.c, line 8.
+(gdb) run
+Starting program: /mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/char_array2
+
+Breakpoint 1, main () at char_array2.c:7
+7           strcpy(str_a, "Hello, world!\n");
+(gdb) i r eip
+Invalid register `eip'
+(gdb) i r rip
+rip            0x4005ed 0x4005ed <main+23>
+(gdb) x/5i $rip
+=> 0x4005ed <main+23>:  lea    rax,[rbp-0x20]
+   0x4005f1 <main+27>:  mov    esi,0x4006b4
+   0x4005f6 <main+32>:  mov    rdi,rax
+   0x4005f9 <main+35>:  call   0x400490 <strcpy@plt>
+   0x4005fe <main+40>:  lea    rax,[rbp-0x20]
+(gdb) continue
+Continuing.
+
+Breakpoint 2, __strcpy_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S:47
+47      ../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S: No such file or directory.
+(gdb) i r rip
+rip            0x7fffff0d59d0   0x7fffff0d59d0 <__strcpy_sse2_unaligned>
+(gdb) x/5i $rip
+=> 0x7fffff0d59d0 <__strcpy_sse2_unaligned>:    mov    rcx,rsi
+   0x7fffff0d59d3 <__strcpy_sse2_unaligned+3>:  mov    rax,rdi
+   0x7fffff0d59d6 <__strcpy_sse2_unaligned+6>:  and    rcx,0x3f
+   0x7fffff0d59da <__strcpy_sse2_unaligned+10>: cmp    rcx,0x20
+   0x7fffff0d59de <__strcpy_sse2_unaligned+14>: jbe    0x7fffff0d5bf3 <__strcpy_sse2_unaligned+547>
+(gdb) continue
+Continuing.
+
+Breakpoint 3, main () at char_array2.c:8
+8           printf(str_a);
+(gdb) i r rip
+rip            0x4005fe 0x4005fe <main+40>
+(gdb) x/5i $rip
+=> 0x4005fe <main+40>:  lea    rax,[rbp-0x20]
+   0x400602 <main+44>:  mov    rdi,rax
+   0x400605 <main+47>:  mov    eax,0x0
+   0x40060a <main+52>:  call   0x4004b0 <printf@plt>
+   0x40060f <main+57>:  mov    eax,0x0
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/char_array2
+
+Breakpoint 1, main () at char_array2.c:7
+7           strcpy(str_a, "Hello, world!\n");
+(gdb) bt
+#0  main () at char_array2.c:7
+(gdb) cont
+Continuing.
+
+Breakpoint 2, __strcpy_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S:47
+47      ../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S: No such file or directory.
+(gdb) bt
+#0  __strcpy_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S:47
+#1  0x00000000004005fe in main () at char_array2.c:7
+(gdb) cont
+Continuing.
+
+Breakpoint 3, main () at char_array2.c:8
+8           printf(str_a);
+(gdb) bt
+#0  main () at char_array2.c:8
+(gdb)
