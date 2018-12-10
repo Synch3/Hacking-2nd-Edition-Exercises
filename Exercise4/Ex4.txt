@@ -1,0 +1,111 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise4$ gcc -o pointer pointer.c
+pointer.c: In function ‘main’:
+pointer.c:11:5: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(pointer);
+     ^
+pointer.c:14:5: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(pointer2); // Print it.
+     ^
+pointer.c:16:5: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(pointer); // Print again.
+     ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise4$ ./pointer
+Hello, world!
+llo, world!
+Hey you guys!
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise4$ gcc -g pointer pointer.c
+pointer.c: In function ‘main’:
+pointer.c:11:5: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(pointer);
+     ^
+pointer.c:14:5: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(pointer2); // Print it.
+     ^
+pointer.c:16:5: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(pointer); // Print again.
+     ^
+pointer: In function `_fini':
+(.fini+0x0): multiple definition of `_fini'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o:(.fini+0x0): first defined here
+pointer: In function `data_start':
+(.data+0x0): multiple definition of `__data_start'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o:(.data+0x0): first defined here
+pointer: In function `data_start':
+(.data+0x8): multiple definition of `__dso_handle'
+/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o:(.data+0x0): first defined here
+pointer:(.rodata+0x0): multiple definition of `_IO_stdin_used'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o:(.rodata.cst4+0x0): first defined here
+pointer: In function `_start':
+(.text+0x0): multiple definition of `_start'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o:(.text+0x0): first defined here
+pointer: In function `_init':
+(.init+0x0): multiple definition of `_init'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o:(.init+0x0): first defined here
+/tmp/ccEDkdD9.o: In function `main':
+/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise4/pointer.c:4: multiple definition of `main'
+pointer:(.text+0xf6): first defined here
+/usr/lib/gcc/x86_64-linux-gnu/5/crtend.o:(.tm_clone_table+0x0): multiple definition of `__TMC_END__'
+pointer:(.data+0x10): first defined here
+/usr/bin/ld: error in pointer(.eh_frame); no .eh_frame_hdr table will be created.
+collect2: error: ld returned 1 exit status
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise4$ gdb -q ./pointer
+Reading symbols from ./pointer...(no debugging symbols found)...done.
+(gdb) list
+No symbol table is loaded.  Use the "file" command.
+(gdb) quit
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise4$ gcc -g -o pointer pointer.c
+pointer.c: In function ‘main’:
+pointer.c:11:5: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(pointer);
+     ^
+pointer.c:14:5: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(pointer2); // Print it.
+     ^
+pointer.c:16:5: warning: format not a string literal and no format arguments [-Wformat-security]
+     printf(pointer); // Print again.
+     ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise4$ gdb -q ./pointer
+Reading symbols from ./pointer...done.
+(gdb) list
+1       #include <stdio.h>
+2       #include <string.h>
+3
+4       int main() {
+5           char str_a[20]; // A 20-element character array
+6           char *pointer; //A pointer, meant for a character array
+7           char *pointer2; // A second pointer
+8
+9           strcpy(str_a, "Hello, world!\n");
+10          pointer = str_a; // Set the first pointer to the start of the array
+(gdb)
+11          printf(pointer);
+12
+13          pointer2 = pointer + 2; // Second pointer set 2 bytes further in.
+14          printf(pointer2); // Print it.
+15          strcpy(pointer2, "y you guys!\n"); // Copy into that spot.
+16          printf(pointer); // Print again.
+17      }(gdb) break 11
+Breakpoint 1 at 0x4005d7: file pointer.c, line 11.
+(gdb) run
+Starting program: /mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise4/pointer
+
+Breakpoint 1, main () at pointer.c:11
+11          printf(pointer);
+(gdb) x/xw pointer
+0x7ffffffee150: 0x6c6c6548
+(gdb) x/s pointer
+0x7ffffffee150: "Hello, world!\n"
+(gdb) x/xw &pointer
+0x7ffffffee140: 0xfffee150
+(gdb) print &pointer
+$1 = (char **) 0x7ffffffee140
+(gdb) print pointer
+$2 = 0x7ffffffee150 "Hello, world!\n"
+(gdb) Quit
+(gdb) Quit
+(gdb) quit
+A debugging session is active.
+
+        Inferior 1 [process 61] will be killed.
+
+Quit anyway? (y or n) y
