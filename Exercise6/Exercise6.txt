@@ -1,0 +1,19 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise6$ gcc -o fmt_strings fmt_strings.c
+fmt_strings.c: In function ‘main’:
+fmt_strings.c:8:5: warning: implicit declaration of function ‘strcpy’ [-Wimplicit-function-declaration]
+     strcpy(string, "sample");
+     ^
+fmt_strings.c:8:5: warning: incompatible implicit declaration of built-in function ‘strcpy’
+fmt_strings.c:8:5: note: include ‘<string.h>’ or provide a declaration of ‘strcpy’
+fmt_strings.c:15:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘char *’ [-Wformat=]
+     printf("[string] %s Address %08x\n", string, string);
+            ^
+fmt_strings.c:18:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("variable A is at address: %08x\n", &A);
+            ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise6$ ./fmt_strings
+[A] Dec: -73, Hex: ffffffb7, Unsigned: 4294967223
+,[B] Dec: 31337, Hex: 7a69, Unsigned: 31337
+[field width on B] 3: '31337', 10: '     31337', '00031337'
+[string] sample Address f9a3b510
+variable A is at address: f9a3b508
