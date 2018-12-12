@@ -1,0 +1,17 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise7$ gcc -o input input.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise7$ ./input
+Repeat how many times? 3
+  0 - Hello, world!
+  1 - Hello, world!
+  2 - Hello, world!
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise7$ ./input
+Repeat how many times? 9
+  0 - Hello, world!
+  1 - Hello, world!
+  2 - Hello, world!
+  3 - Hello, world!
+  4 - Hello, world!
+  5 - Hello, world!
+  6 - Hello, world!
+  7 - Hello, world!
+  8 - Hello, world!
