@@ -1,0 +1,4 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise8$ gcc typecasting.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise8$ ./a.out
+[integers]       a = 13  b = 5
+[floats]         c = 2.000000    d = 2.600000
