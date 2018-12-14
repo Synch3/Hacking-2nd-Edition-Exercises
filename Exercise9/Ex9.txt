@@ -1,0 +1,99 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ gcc pointer_types.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ ./a.out
+[integer pointer] points to 0x7fffc92a4430, which contains the integer 1
+[integer pointer] points to 0x7fffc92a4434, which contains the integer 2
+[integer pointer] points to 0x7fffc92a4438, which contains the integer 3
+[integer pointer] points to 0x7fffc92a443c, which contains the integer 4
+[integer pointer] points to 0x7fffc92a4440, which contains the integer 5
+[char pointer] points to 0x7fffc92a4450, which contains the char 'a'
+[char pointer] points to 0x7fffc92a4451, which contains the char 'b'
+[char pointer] points to 0x7fffc92a4452, which contains the char 'c'
+[char pointer] points to 0x7fffc92a4453, which contains the char 'd'
+[char pointer] points to 0x7fffc92a4454, which contains the char 'e'
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ gcc pointer_types2.c
+pointer_types2.c: In function ‘main’:
+pointer_types2.c:12:18: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+     char_pointer = int_array; // The char_pointer and int_pointer are now pointing to
+                  ^
+pointer_types2.c:13:17: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+     int_pointer = char_array; // incompatible data types. --- Need to understand this better.
+                 ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ ./a.out
+[integer pointer] points to 0x7fffe2f0f6f0, which contains the integer 'a'
+[integer pointer] points to 0x7fffe2f0f6f4, which contains the integer 'e'
+[integer pointer] points to 0x7fffe2f0f6f8, which contains the integer ' '
+[integer pointer] points to 0x7fffe2f0f6fc, which contains the integer ''
+[integer pointer] points to 0x7fffe2f0f700, which contains the integer ''
+[char pointer] points to 0x7fffe2f0f6d0, which contains the char 1
+[char pointer] points to 0x7fffe2f0f6d1, which contains the char 0
+[char pointer] points to 0x7fffe2f0f6d2, which contains the char 0
+[char pointer] points to 0x7fffe2f0f6d3, which contains the char 0
+[char pointer] points to 0x7fffe2f0f6d4, which contains the char 2
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ gcc pointer_types3.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ ./a.out
+[integer pointer] points to 0x7fffc89adc20, which contains the integer 'a'
+[integer pointer] points to 0x7fffc89adc21, which contains the integer 'b'
+[integer pointer] points to 0x7fffc89adc22, which contains the integer 'c'
+[integer pointer] points to 0x7fffc89adc23, which contains the integer 'd'
+[integer pointer] points to 0x7fffc89adc24, which contains the integer 'e'
+[char pointer] points to 0x7fffc89adc00, which contains the char 1
+[char pointer] points to 0x7fffc89adc04, which contains the char 2
+[char pointer] points to 0x7fffc89adc08, which contains the char 3
+[char pointer] points to 0x7fffc89adc0c, which contains the char 4
+[char pointer] points to 0x7fffc89adc10, which contains the char 5
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ gcc pointer_types4.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ ./a.out
+[char pointer] points to 0x7fffd82d9ca0, which contains the integer 'a'
+[char pointer] points to 0x7fffd82d9ca1, which contains the integer 'b'
+[char pointer] points to 0x7fffd82d9ca2, which contains the integer 'c'
+[char pointer] points to 0x7fffd82d9ca3, which contains the integer 'd'
+[char pointer] points to 0x7fffd82d9ca4, which contains the integer 'e'
+[integer pointer] points to 0x7fffd82d9c80, which contains the char 1
+[integer pointer] points to 0x7fffd82d9c84, which contains the char 2
+[integer pointer] points to 0x7fffd82d9c88, which contains the char 3
+[integer pointer] points to 0x7fffd82d9c8c, which contains the char 4
+[integer pointer] points to 0x7fffd82d9c90, which contains the char 5
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ gcc pointer_types5.c
+pointer_types5.c: In function ‘main’:
+pointer_types5.c:11:24: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     hacky_nonpointer = (unsigned int) char_array;
+                        ^
+pointer_types5.c:16:33: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+             hacky_nonpointer, *((char *) hacky_nonpointer));
+                                 ^
+pointer_types5.c:15:16: warning: format ‘%p’ expects argument of type ‘void *’, but argument 2 has type ‘unsigned int’ [-Wformat=]
+         printf("[hacky_nonpointer] points to %p, which contains the integer '%c'\n",
+                ^
+pointer_types5.c:20:24: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     hacky_nonpointer = (unsigned int) int_array;
+                        ^
+pointer_types5.c:24:33: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+             hacky_nonpointer, *((int *) hacky_nonpointer));
+                                 ^
+pointer_types5.c:23:16: warning: format ‘%p’ expects argument of type ‘void *’, but argument 2 has type ‘unsigned int’ [-Wformat=]
+         printf("[hacky_nonpointer] points to %p, which contains the char %d\n",
+                ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ ./a.out
+Segmentation fault (core dumped)
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ gcc pointer_types5.c
+pointer_types5.c: In function ‘main’:
+pointer_types5.c:11:24: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     hacky_nonpointer = (unsigned int) char_array;
+                        ^
+pointer_types5.c:16:33: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+             hacky_nonpointer, *((char *) hacky_nonpointer));
+                                 ^
+pointer_types5.c:15:16: warning: format ‘%p’ expects argument of type ‘void *’, but argument 2 has type ‘unsigned int’ [-Wformat=]
+         printf("[hacky_nonpointer] points to %p, which contains the integer '%c'\n",
+                ^
+pointer_types5.c:20:24: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     hacky_nonpointer = (unsigned int) int_array;
+                        ^
+pointer_types5.c:24:33: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+             hacky_nonpointer, *((int *) hacky_nonpointer));
+                                 ^
+pointer_types5.c:23:16: warning: format ‘%p’ expects argument of type ‘void *’, but argument 2 has type ‘unsigned int’ [-Wformat=]
+         printf("[hacky_nonpointer] points to %p, which contains the char %d\n",
+                ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise9$ ./a.out
+Segmentation fault (core dumped)
