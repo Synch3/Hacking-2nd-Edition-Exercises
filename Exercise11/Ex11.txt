@@ -1,0 +1,108 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$ gcc convert.c
+convert.c: In function ‘usage’:
+convert.c:5:5: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+     exit(1);
+     ^
+convert.c:5:5: warning: incompatible implicit declaration of built-in function ‘exit’
+convert.c:5:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+convert.c: In function ‘main’:
+convert.c:14:13: warning: implicit declaration of function ‘atoi’ [-Wimplicit-function-declaration]
+     count = atoi(argv[2]);          // Convert 2nd arg into integer (atoi => ASCII to integer)
+             ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$ ./a.out
+Usage: ./a.out <message> <# of times to repeat>
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$ ./a.out 'Hello, world!' 3
+Repeating 3 times..
+  0 - ./a.out
+  1 - Hello, world!
+  2 - 3
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$ ./a.out 'Hello, world!' 3
+Repeating 3 times..
+  0 - ./a.out
+  1 - Hello, world!
+  2 - 3
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$ gcc convert.c
+convert.c: In function ‘usage’:
+convert.c:5:5: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+     exit(1);
+     ^
+convert.c:5:5: warning: incompatible implicit declaration of built-in function ‘exit’
+convert.c:5:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+convert.c: In function ‘main’:
+convert.c:14:13: warning: implicit declaration of function ‘atoi’ [-Wimplicit-function-declaration]
+     count = atoi(argv[2]);          // Convert 2nd arg into integer (atoi => ASCII to integer)
+             ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$ ./a.out 'Hello, world!' 3
+Repeating 3 times..
+  0 - Hello, world!
+  1 - Hello, world!
+  2 - Hello, world!
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$ gcc convert2.c
+convert2.c: In function ‘usage’:
+convert2.c:5:5: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+     exit(1);
+     ^
+convert2.c:5:5: warning: incompatible implicit declaration of built-in function ‘exit’
+convert2.c:5:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+convert2.c: In function ‘main’:
+convert2.c:14:9: warning: implicit declaration of function ‘atoi’ [-Wimplicit-function-declaration]
+ count = atoi(argv[2]); // Convert 2nd arg into integer.
+         ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$ ./a.out test
+Segmentation fault (core dumped)
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$ gcc -g convert2.c
+convert2.c: In function ‘usage’:
+convert2.c:5:5: warning: implicit declaration of function ‘exit’ [-Wimplicit-function-declaration]
+     exit(1);
+     ^
+convert2.c:5:5: warning: incompatible implicit declaration of built-in function ‘exit’
+convert2.c:5:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘exit’
+convert2.c: In function ‘main’:
+convert2.c:14:9: warning: implicit declaration of function ‘atoi’ [-Wimplicit-function-declaration]
+ count = atoi(argv[2]); // Convert 2nd arg into integer.
+         ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$ gdb -q ./a.out
+Reading symbols from ./a.out...done.
+(gdb) run test
+Starting program: /mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11/a.out test
+
+Program received signal SIGSEGV, Segmentation fault.
+__GI_____strtol_l_internal (nptr=0x0, endptr=endptr@entry=0x0, base=base@entry=10, group=group@entry=0, loc=0x7fffff3f5420 <_nl_global_locale>) at ../stdlib/strtol_l.c:293
+293     ../stdlib/strtol_l.c: No such file or directory.
+(gdb) where
+#0  __GI_____strtol_l_internal (nptr=0x0, endptr=endptr@entry=0x0, base=base@entry=10, group=group@entry=0, loc=0x7fffff3f5420 <_nl_global_locale>) at ../stdlib/strtol_l.c:293
+#1  0x00007fffff06b3d2 in __strtol (nptr=<optimized out>, endptr=endptr@entry=0x0, base=base@entry=10) at ../stdlib/strtol.c:106
+#2  0x00007fffff066e90 in atoi (nptr=<optimized out>) at atoi.c:27
+#3  0x0000000000400609 in main (argc=2, argv=0x7ffffffee248) at convert2.c:14
+(gdb) break main
+Breakpoint 1 at 0x4005f1: file convert2.c, line 14.
+(gdb) run test
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11/a.out test
+
+Breakpoint 1, main (argc=2, argv=0x7ffffffee248) at convert2.c:14
+14      count = atoi(argv[2]); // Convert 2nd arg into integer.
+(gdb) cont
+Continuing.
+
+Program received signal SIGSEGV, Segmentation fault.
+__GI_____strtol_l_internal (nptr=0x0, endptr=endptr@entry=0x0, base=base@entry=10, group=group@entry=0, loc=0x7fffff3f5420 <_nl_global_locale>) at ../stdlib/strtol_l.c:293
+293     ../stdlib/strtol_l.c: No such file or directory.
+(gdb) x/3xw 0x7fffff3f5420
+0x7fffff3f5420 <_nl_global_locale>:     0xff3f09a0      0x00007fff      0xff3f0ee0
+(gdb) x/s 0xff3f09a0
+0xff3f09a0:     <error: Cannot access memory at address 0xff3f09a0>
+(gdb) x/s 0x00007fff
+0x7fff: <error: Cannot access memory at address 0x7fff>
+(gdb) print 0xff3f09a0
+$1 = 4282321312
+(gdb) x/s 0xff3f0ee0
+0xff3f0ee0:     <error: Cannot access memory at address 0xff3f0ee0>
+(gdb) quit
+A debugging session is active.
+
+        Inferior 1 [process 59] will be killed.
+
+Quit anyway? (y or n) y
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise11$
