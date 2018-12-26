@@ -1,0 +1,12 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise10$ gcc -o commandline commandline.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise10$ ./commandline
+There were 1 arguments provided:
+argument #0     -       ./commandline
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise10$ ./commandline this is a test
+There were 5 arguments provided:
+argument #0     -       ./commandline
+argument #1     -       this
+argument #2     -       is
+argument #3     -       a
+argument #4     -       test
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise10$
