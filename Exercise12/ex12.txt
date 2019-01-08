@@ -1,0 +1,92 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises$ cd Exercise12
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise12$ gcc scope.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise12$ ./a.out
+[in main] i = 3
+        [in func1] i = 5
+                [in func2] i = 7
+                        [in func3] i = 11
+                [back in func2] i = 7
+        [back in func1] i = 5
+[back in main] i = 3
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise12$ gcc scope2.c
+scope2.c: In function ‘func1’:
+scope2.c:21:12: warning: too many arguments for format [-Wformat-extra-args]
+     printf("\t[in func1] i = %d\n", i, j);
+            ^
+scope2.c: In function ‘main’:
+scope2.c:28:12: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+     printf("[in main] i = %d, j = %d\n, i, j");
+            ^
+scope2.c:28:12: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise12$ ./a.out
+[in main] i = -650585080, j = -650585064
+, i, j  [in func1] i = 5
+                [in func2] i = 7, j = 42
+                [in func2] setting j = 1337
+                        [in func3] i = 11, j = 999
+                [back in func2] i = 7, j = 1337
+        [back in func1] i = 5, j = 1337
+[back in main] i = 3, j = 1337
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise12$ gcc scope3.c
+scope3.c: In function ‘func3’:
+scope3.c:7:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("\t\t\t[in func3] i @ 0x%08x = %d\n", &i, j);
+            ^
+scope3.c:8:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("\t\t\t[in func3] j @ 0x%08x = %d\n", &j, j);
+            ^
+scope3.c: In function ‘func2’:
+scope3.c:13:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("\t\t[in func2] i @ 0x%08x = %d\n", &i, j);
+            ^
+scope3.c:14:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("\t\t[in func2] j @ 0x%08x = %d\n", &j, j);
+            ^
+scope3.c:18:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("\t\t[back in func2] i @ 0x%08x = %d\n", &i, j);
+            ^
+scope3.c:19:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("\t\t[back to func2] j @ 0x%08x = %d\n", &j, j);
+            ^
+scope3.c: In function ‘func1’:
+scope3.c:24:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("\t[in func1] i @ 0x%08x = %d\n", &i, j);
+            ^
+scope3.c:25:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("\t[in func1] j @ 0x%08x = %d\n", &j, j);
+            ^
+scope3.c:27:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("\t[back in func1] i @ 0x%08x = %d\n", &i, j);
+            ^
+scope3.c:28:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("\t[back in func1] j @ 0x%08x = %d\n", &j, j);
+            ^
+scope3.c: In function ‘main’:
+scope3.c:33:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("[in main] i @ 0x%08x = %d\n", &i, j);
+            ^
+scope3.c:34:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("[in main] j @ 0x%08x = %d\n", &j, j);
+            ^
+scope3.c:36:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("[back in main] i @ 0x%08x = %d\n", &i, j);
+            ^
+scope3.c:37:12: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘int *’ [-Wformat=]
+     printf("[back in main] j @ 0x%08x = %d\n", &j, j);
+            ^
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise12$ ./a.out
+[in main] i @ 0xdb4f9394 = 42
+[in main] j @ 0x00601048 = 42
+        [in func1] i @ 0xdb4f9374 = 42
+        [in func1] j @ 0x00601048 = 42
+                [in func2] i @ 0xdb4f9354 = 42
+                [in func2] j @ 0x00601048 = 42
+                [in func2] setting j = 1337
+                        [in func3] i @ 0xdb4f9330 = 999
+                        [in func3] j @ 0xdb4f9334 = 999
+                [back in func2] i @ 0xdb4f9354 = 1337
+                [back to func2] j @ 0x00601048 = 1337
+        [back in func1] i @ 0xdb4f9374 = 1337
+        [back in func1] j @ 0x00601048 = 1337
+[back in main] i @ 0xdb4f9394 = 1337
+[back in main] j @ 0x00601048 = 1337
