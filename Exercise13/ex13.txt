@@ -1,0 +1,37 @@
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise13$ gcc static.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise13$ ls
+a.out  ex13.txt  static2.c  static.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise13$ ./a.out
+[in main] static_var = 1337
+        [in function] var = 5
+        [in function] static_var = 5
+[in main] static_var = 1337
+        [in function] var = 5
+        [in function] static_var = 6
+[in main] static_var = 1337
+        [in function] var = 5
+        [in function] static_var = 7
+[in main] static_var = 1337
+        [in function] var = 5
+        [in function] static_var = 8
+[in main] static_var = 1337
+        [in function] var = 5
+        [in function] static_var = 9
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise13$ gcc static2.c
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise13$ ./a.out
+[in main] static_var @ 0x601044 = 1337
+        [in function] var @ 0x7ffff0cbb3f4 = 5
+        [in function] static_var @ 0x601040 = 5
+[in main] static_var @ 0x601044 = 1337
+        [in function] var @ 0x7ffff0cbb3f4 = 5
+        [in function] static_var @ 0x601040 = 6
+[in main] static_var @ 0x601044 = 1337
+        [in function] var @ 0x7ffff0cbb3f4 = 5
+        [in function] static_var @ 0x601040 = 7
+[in main] static_var @ 0x601044 = 1337
+        [in function] var @ 0x7ffff0cbb3f4 = 5
+        [in function] static_var @ 0x601040 = 8
+[in main] static_var @ 0x601044 = 1337
+        [in function] var @ 0x7ffff0cbb3f4 = 5
+        [in function] static_var @ 0x601040 = 9
+Synche@LAPTOP-34JPB40T:/mnt/c/Users/jon/Projects/Hacking-2nd-Edition-Exercises/Exercise13$
